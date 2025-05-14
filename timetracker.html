@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Time Tracker — Solo LEVELING</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: url('assets/timetrackergif.gif') no-repeat center center fixed;
+            background-size: cover;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: -1;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen text-white">
+
+    <!-- Навигация -->
+    <header class="flex justify-between items-center px-6 py-3 bg-gray-900 bg-opacity-80 h-14">
+        <div class="flex items-center space-x-3">
+            <img src="assets/Logo.png" alt="Logo" class="w-10 h-10 cursor-pointer" id="logo" />
+            <h1 class="text-base font-bold">Solo LEVELING</h1>
+        </div>
+        <nav>
+            <ul class="flex space-x-6 text-sm">
+                <li><a href="index.html" class="hover:text-blue-400">Home</a></li>
+                <li><a href="about.html" class="hover:text-blue-400">About Us</a></li>
+                <li><a href="contactus.html" class="hover:text-blue-400">Contact Us</a></li>
+                <li><a href="login.html" class="hover:text-blue-400">Log In</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Основной контент -->
+    <main class="flex flex-col items-center justify-center py-20 px-6">
+        <div class="bg-white bg-opacity-10 backdrop-blur-lg rounded-2xl p-10 shadow-2xl max-w-xl w-full text-center">
+            <h2 class="text-3xl font-bold text-blue-300 mb-6">⏳ Live Time Tracker</h2>
+
+            <div class="flex justify-center gap-4 mb-6">
+                <button id="start-lesson"
+                    class="bg-green-500 hover:bg-green-600 text-white py-2 px-6 rounded-lg transition">Start</button>
+                <button id="finish-lesson"
+                    class="bg-red-500 hover:bg-red-600 text-white py-2 px-6 rounded-lg transition">Finish</button>
+                <button id="reset-lesson"
+                    class="bg-yellow-400 hover:bg-yellow-500 text-black py-2 px-6 rounded-lg transition">Reset</button>
+            </div>
+
+            <div class="space-y-3 text-sm">
+                <p id="start-time" class="bg-gray-800 bg-opacity-60 px-4 py-2 rounded">Start Time: -</p>
+                <p id="end-time" class="bg-gray-800 bg-opacity-60 px-4 py-2 rounded">End Time: -</p>
+                <p id="duration" class="text-lg font-semibold text-blue-200">Duration: 0 seconds</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Слайдбар -->
+    <div id="sidebar"
+        class="fixed top-0 left-0 w-64 h-full bg-gray-900 bg-opacity-95 shadow-lg transform -translate-x-full transition-transform duration-300 z-50">
+        <div class="p-6 text-white">
+            <h2 class="text-xl font-bold mb-4">Menu</h2>
+            <ul class="space-y-4 text-sm">
+                <li><a href="lessons.html" class="hover:text-blue-400">My Courses</a></li>
+                <li><a href="tracker.html" class="text-blue-400 font-bold">Time Tracker</a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-40"></div>
+
+    <!-- Скрипт -->
+    <script>
+        const logo = document.getElementById('logo');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+
+        logo.addEventListener('click', () => {
+            sidebar.classList.remove('-translate-x-full');
+            overlay.classList.remove('hidden');
+        });
+
+        overlay.addEventListener('click', () => {
+            sidebar.classList.add('-translate-x-full');
+            overlay.classList.add('hidden');
+        });
+
+        // Таймтрекер
+        const startTimeDisplay = document.getElementById('start-time');
+        const endTimeDisplay = document.getElementById('end-time');
+        const durationDisplay = document.getElementById('duration');
+        const startBtn = document.getElementById('start-lesson');
+        const finishBtn = document.getElementById('finish-lesson');
+        const resetBtn = document.getElementById('reset-lesson');
+
+        let timerInterval;
+
+        function updateDuration() {
+            const start = localStorage.getItem('startTime');
+            if (start) {
+                const totalSeconds = Math.floor((Date.now() - parseInt(start)) / 1000);
+                const hours = Math.floor(totalSeconds / 3600);
+                const minutes = Math.floor((totalSeconds % 3600) / 60);
+                const seconds = totalSeconds % 60;
+                durationDisplay.textContent = `Duration: ${hours} hr ${minutes} min ${seconds} sec`;
+            }
+        }
+
+
+
+        function startTimer() {
+            if (!localStorage.getItem('startTime')) {
+                localStorage.setItem('startTime', Date.now());
+                startTimeDisplay.textContent = `Start Time: ${new Date().toLocaleTimeString()}`;
+                endTimeDisplay.textContent = `End Time: -`;
+            }
+            timerInterval = setInterval(updateDuration, 1000);
+        }
+
+        function stopTimer() {
+            clearInterval(timerInterval);
+            const endTime = new Date();
+            endTimeDisplay.textContent = `End Time: ${endTime.toLocaleTimeString()}`;
+        }
+
+        function resetTimer() {
+            localStorage.removeItem('startTime');
+            clearInterval(timerInterval);
+            startTimeDisplay.textContent = 'Start Time: -';
+            endTimeDisplay.textContent = 'End Time: -';
+            durationDisplay.textContent = 'Duration: 0 seconds';
+        }
+
+        startBtn.addEventListener('click', startTimer);
+        finishBtn.addEventListener('click', stopTimer);
+        resetBtn.addEventListener('click', resetTimer);
+
+        // Автовосстановление при перезагрузке
+        window.addEventListener('load', () => {
+            const storedStart = localStorage.getItem('startTime');
+            if (storedStart) {
+                startTimeDisplay.textContent = `Start Time: ${new Date(parseInt(storedStart)).toLocaleTimeString()}`;
+                startTimer();
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us - Solo LEVELING</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to bottom, #001933, #350112);
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            padding: 10px;
+        }
+
+        .quote {
+            font-size: 34px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+            margin-top: 40px;
+        }
+
+        .quote span {
+            color: red;
+        }
+
+        .header {
+            font-size: 30px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .subtitle {
+            font-size: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        /* Flexbox layout for video and content */
+        .video-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            margin-bottom: 20px;
+            /* Prevent wrapping */
+        }
+
+        /* Video */
+        .video-container iframe {
+            width: 45%;
+            /* Make video bigger */
+            height: 350px;
+            border-radius: 10px;
+            margin-top: 30px;
+            margin-left: 50px;
+        }
+
+        /* Text content */
+        .content {
+            width: 45%;
+            /* Make content box smaller */
+            background-color: #1c3352;
+            border-radius: 10px;
+            padding: 25px;
+            /* Reduce padding */
+            height: 350px;
+            /* Set fixed height */
+            overflow-y: auto;
+            margin-top: 30px;
+            margin-right: 50px;
+            /* Enable vertical scrolling if content overflows */
+            font-size: 20px;
+            /* Reduce font size */
+        }
+
+        .back-button {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            z-index: 100;
+        }
+
+        .back-button:hover {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+    </style>
+</head>
+
+<body class="text-white relative min-h-screen overflow-x-hidden">
+    <!-- Навигация -->
+    <header class="flex justify-between items-center px-6 py-3 bg-gray-900 bg-opacity-80 h-14">
+        <div class="flex items-center space-x-3">
+            <img src="assets/Logo.png" alt="Logo" class="w-10 h-10 cursor-pointer" id="logo" />
+            <h1 class="text-base font-bold">Solo LEVELING</h1>
+        </div>
+        <nav>
+            <ul class="flex space-x-6 text-sm">
+                <li><a href="index.html" class="hover:text-blue-400">Home</a></li>
+                <li><a href="about.html" class="hover:text-blue-400">About Us</a></li>
+                <li><a href="contactus.html" class="hover:text-blue-400">Contact Us</a></li>
+                <li><a href="login.html" class="hover:text-blue-400">Log In</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Контент -->
+        <div class="container">
+            <div class="quote">
+                “Falling in love with coding — thanks, JavaScript!” <span>❤️🤖</span>
+            </div>
+
+            <div class="header">
+                Algorithms and Data Structures
+            </div>
+
+            <div class="subtitle">
+                Explore how algorithms, data, and machine learning combine to solve complex problems.
+            </div>
+
+            <div class="video-container">
+                <!-- Video on the left side -->
+                <iframe src="https://www.youtube.com/embed/8hly31xKli0" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+
+                <!-- Content on the right side -->
+                <div class="content">
+                    <p>Introduction to Programming is the gateway to understanding how computers work. In this field,
+                        you’ll learn the fundamentals of coding languages, such as variables, loops, and functions.
+                        Programming helps you solve problems efficiently by breaking them down into smaller tasks. With
+                        logical thinking and creativity, you can create applications, websites, and even software that
+                        power everyday tools. From beginners to advanced coders, learning programming opens doors to
+                        endless possibilities, empowering you to shape the digital world. Let’s explore how code
+                        transforms ideas into reality!
+                    </p>
+                </div>
+            </div>
+    </main>
+    <!-- Слайдбар -->
+    <div id="sidebar"
+        class="fixed top-0 left-0 w-64 h-full bg-gray-900 bg-opacity-95 shadow-lg transform -translate-x-full transition-transform duration-300 z-50">
+        <div class="p-6 text-white">
+            <h2 class="text-xl font-bold mb-4">Menu</h2>
+            <ul class="space-y-4 text-sm">
+                <li><a href="lessons.html" class="hover:text-blue-400">My Courses</a></li>
+                <li><a href="timetracker.html" class="hover:text-blue-400">Time-Tracker</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Overlay -->
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-40"></div>
+
+    <script>
+        const logo = document.getElementById('logo');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+
+        logo.addEventListener('click', () => {
+            sidebar.classList.remove('-translate-x-full');
+            overlay.classList.remove('hidden');
+        });
+
+        overlay.addEventListener('click', () => {
+            sidebar.classList.add('-translate-x-full');
+            overlay.classList.add('hidden');
+        });
+    </script>
+    <a href="videolessonsinf.html"
+        class="back-button bg-pink-600 hover:bg-pink-700 text-white px-6 py-2 rounded-full transition">
+        Back
+    </a>
+</body>

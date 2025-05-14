@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Informatics - Solo LEVELING</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Custom Font and Background -->
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-image: url('assets/gifka22.gif');
+            /* Путь к твоему GIF */
+            background-size: cover;
+            /* Сделать так, чтобы GIF занимал весь экран */
+            background-position: center;
+            /* Центрировать GIF */
+            background-repeat: no-repeat;
+            /* Не повторять GIF */
+        }
+
+        /* Кнопка Back в левом нижнем углу */
+        .back-button {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            z-index: 100;
+        }
+
+        .back-button:hover {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+    </style>
+</head>
+
+<body class="text-white relative min-h-screen overflow-x-hidden flex flex-col">
+
+    <!-- Навигация -->
+    <header class="flex justify-between items-center px-6 py-3 bg-[#0b1120] h-14">
+        <div class="flex items-center space-x-3">
+            <img src="assets/Logo.png" alt="Logo" class="w-10 h-10 cursor-pointer" id="logo" />
+            <h1 class="text-base font-bold">Solo LEVELING</h1>
+        </div>
+        <nav>
+            <ul class="flex space-x-6 text-sm">
+                <li><a href="index.html" class="hover:text-blue-400">Home</a></li>
+                <li><a href="about.html" class="hover:text-blue-400">About Us</a></li>
+                <li><a href="lessons.html" class="hover:text-blue-400">Lessons</a></li>
+                <li><a href="contactus.html" class="hover:text-blue-400">Contact Us</a></li>
+                <li><a href="login.html" class="hover:text-blue-400">Log In</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Главный блок -->
+    <main class="px-14 py-20 max-w-7xl mx-auto">
+
+        <!-- Заголовок -->
+        <div class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold bg-white/10 px-10 py-10 rounded-3xl shadow-lg inline-block">
+                Informatics Lessons</h1>
+        </div>
+
+        <!-- Уроки -->
+        <div class="space-y-10">
+
+            <!-- Урок 1: Introduction to Programming -->
+            <div class="bg-white/10 p-6 rounded-2xl shadow-lg backdrop-blur-lg">
+                <h2 class="text-xl font-semibold mb-4">1. Introduction to Programming</h2>
+                <p class="text-sm text-gray-300 mb-6">"Learn the fundamentals of programming and how to think like a
+                    programmer."</p>
+                <a href="video1.html" class="bg-pink-600 hover:bg-pink-700 text-white px-6 py-2 rounded-full">Start
+                    Now</a>
+            </div>
+
+            <!-- Урок 2: Algorithms and Data Structures -->
+            <div class="bg-white/10 p-6 rounded-2xl shadow-lg backdrop-blur-lg">
+                <h2 class="text-xl font-semibold mb-4">2. Algorithms and Data Structures</h2>
+                <p class="text-sm text-gray-300 mb-6">"Dive into algorithms, data structures, and learn how they form
+                    the foundation of programming."</p>
+                <a href="video2.html" class="bg-pink-600 hover:bg-pink-700 text-white px-6 py-2 rounded-full">Start
+                    Now</a>
+            </div>
+
+            <!-- Урок 3: Web Development Basics -->
+            <div class="bg-white/10 p-6 rounded-2xl shadow-lg backdrop-blur-lg">
+                <h2 class="text-xl font-semibold mb-4">3. Web Development Basics</h2>
+                <p class="text-sm text-gray-300 mb-6">"Learn the basics of web development, including HTML, CSS, and
+                    JavaScript."</p>
+                <a href="video3.html" class="bg-pink-600 hover:bg-pink-700 text-white px-6 py-2 rounded-full">Start
+                    Now</a>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Слайдбар -->
+    <div id="sidebar"
+        class="fixed top-0 left-0 w-64 h-full bg-gray-900 bg-opacity-95 shadow-lg transform -translate-x-full transition-transform duration-300 z-50">
+        <div class="p-6 text-white">
+            <h2 class="text-xl font-bold mb-4">Menu</h2>
+            <ul class="space-y-4 text-sm">
+                <li><a href="lessons.html" class="hover:text-blue-400">My Courses</a></li>
+                <li><a href="timetracker.html" class="hover:text-blue-400">Time-Tracker</a></li>
+                <li><a href="logout.html" class="hover:text-blue-400">Log Out</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Overlay -->
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-40"></div>
+
+    <!-- Скрипт сайдбара -->
+    <script>
+        const logo = document.getElementById('logo');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+
+        logo.addEventListener('click', () => {
+            sidebar.classList.remove('-translate-x-full');
+            overlay.classList.remove('hidden');
+        });
+
+        overlay.addEventListener('click', () => {
+            sidebar.classList.add('-translate-x-full');
+            overlay.classList.add('hidden');
+        });
+    </script>
+
+    <!-- Кнопка Back -->
+    <a href="lessons.html"
+        class="back-button bg-pink-600 hover:bg-pink-700 text-white px-6 py-2 rounded-full transition">
+        Back
+    </a>
+
+
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Log In - Solo LEVELING</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="login.css" />
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="left-side">
+            <img src="assets/gifka.gif" alt="Animation" class="gif-image" />
+        </div>
+        <div class="right-side">
+            <header>
+                <h1>Log In</h1>
+            </header>
+
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required placeholder="Enter your email address" />
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required placeholder="Enter your password" />
+                </div>
+
+                <button type="submit" id="submitBtn">Log In</button>
+            </form>
+
+            <!-- Уведомление о успешном логине -->
+            <div id="loginSuccess"
+                style="display: none; background-color: #4CAF50; color: white; padding: 20px; border-radius: 5px; text-align: center;">
+                Login successful! Redirecting...
+            </div>
+
+
+            <a href="signup.html" class="back-link">Don't have an account? Create one</a>
+        </div>
+    </div>
+
+    <script src="login.js"></script>
+
+    <a href="index.html" class="back-button bg-pink-600 hover:bg-pink-700 text-white px-1 py-2 rounded-full transition">
+        Back
+    </a>
+</body>
+
+</html>

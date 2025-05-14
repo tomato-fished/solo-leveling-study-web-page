@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us - Solo LEVELING</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to bottom, #001933, #350112);
+        }
+    </style>
+</head>
+
+<body class="text-white relative min-h-screen overflow-x-hidden">
+    <!-- Навигация -->
+    <header class="flex justify-between items-center px-6 py-3 bg-gray-900 bg-opacity-80 h-14">
+        <div class="flex items-center space-x-3">
+            <img src="assets/Logo.png" alt="Logo" class="w-10 h-10 cursor-pointer" id="logo" />
+            <h1 class="text-base font-bold">Solo LEVELING</h1>
+        </div>
+        <nav>
+            <ul class="flex space-x-6 text-sm">
+                <li><a href="index.html" class="hover:text-blue-400">Home</a></li>
+                <li><a href="about.html" class="hover:text-blue-400">About Us</a></li>
+                <li><a href="contactus.html" class="hover:text-blue-400">Contact Us</a></li>
+                <li><a href="login.html" class="hover:text-blue-400">Log In</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Контент -->
+    <main class="py-12 px-6 md:px-20 space-y-16">
+        <section
+            class="flex flex-col md:flex-row items-center justify-between bg-white bg-opacity-10 rounded-3xl p-6 backdrop-blur-md shadow-lg">
+            <img src="assets/zhadyra.png" alt="Zhadyra" style="margin-left: 5rem;"
+                class="w-48 h-48 object-cover rounded-full border-1 border-white mb-4 md:mb-0">
+            <div class="flex-1 md:mx-8 text-center md:text-left flex flex-col justify-center">
+                <h2 class="text-4xl font-bold">Hi, it’s <span class="text-blue-300">Zhadyra</span></h2>
+                <p class="text-lg text-blue-200 font-semibold">I’m a <span class="text-blue-400">Physics Teacher</span>
+                </p>
+                <p class="text-base text-gray-200 mt-2 max-w-xl">
+                    Physics is the language of the universe! In my class, we don’t just memorize formulas—we explore,
+                    question, and discover the hidden laws shaping our world. Get ready to think critically,
+                    experiment boldly, and see physics everywhere. Curiosity leads the way!
+                </p>
+            </div>
+            <img src="assets/anime1.png" alt="Shadow Character" class="w-74 h-80 object-contain hidden md:block ml-0">
+        </section>
+
+        <section
+            class="flex flex-col md:flex-row items-center justify-between bg-white bg-opacity-10 rounded-3xl p-6 backdrop-blur-md shadow-lg">
+            <img src="assets/tomiris.png" alt="Tomiris" style="margin-left: 5rem;"
+                class="w-48 h-48 object-cover rounded-full border-white mb-4 md:mb-0">
+            <div class="flex-1 md:mx-8 text-center md:text-left flex flex-col justify-center">
+                <h2 class="text-4xl font-bold">Hi, it’s <span class="text-purple-300">Tomiris</span></h2>
+                <p class="text-lg text-purple-200 font-semibold">I’m an <span class="text-purple-400">Informatics
+                        Teacher</span></p>
+                <p class="text-base text-gray-200 mt-2 max-w-xl">
+                    Computer science isn’t just code—it’s innovation and creativity! In my class, we don’t just use
+                    technology; we build, explore, and push its limits. Every algorithm solves a problem, and every line
+                    of code shapes the future. Here, we debug, learn, and turn ideas into reality!
+                </p>
+            </div>
+            <img src="assets/anime2.png" alt="Shadow Character" class="w-74 h-80 object-contain hidden md:block ml-0">
+        </section>
+    </main>
+
+    <section class="px-6 md:px-20 py-20 space-y-6 text-center">
+        <h2 class="text-2xl font-bold text-white">Meet More of Our Team Soon!</h2>
+        <p class="text-gray-300 max-w-2xl mx-auto">
+            We’re expanding and bringing in more passionate educators and developers to join our mission.
+            Stay tuned for more profiles, behind-the-scenes stories, and amazing lessons crafted just for you!
+        </p>
+        <div class="h-96"></div>
+    </section>
+
+    <!-- Слайдбар -->
+    <div id="sidebar"
+        class="fixed top-0 left-0 w-64 h-full bg-gray-900 bg-opacity-95 shadow-lg transform -translate-x-full transition-transform duration-300 z-50">
+        <div class="p-6 text-white">
+            <h2 class="text-xl font-bold mb-4">Menu</h2>
+            <ul class="space-y-4 text-sm">
+                <li><a href="lessons.html" class="hover:text-blue-400">My Courses</a></li>
+                <li><a href="timetracker.html" class="hover:text-blue-400">Time-Tracker</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Overlay -->
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-40"></div>
+
+    <script>
+        const logo = document.getElementById('logo');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+
+        logo.addEventListener('click', () => {
+            sidebar.classList.remove('-translate-x-full');
+            overlay.classList.remove('hidden');
+        });
+
+        overlay.addEventListener('click', () => {
+            sidebar.classList.add('-translate-x-full');
+            overlay.classList.add('hidden');
+        });
+    </script>
+</body>
+
+</html>
